@@ -3,11 +3,11 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-root',
   template: `
-    <h1>{{ name }}</h1>
-    <p>Follow me: {{ twitter }}</p>
+    <app-box-of-donuts size="5"></app-box-of-donuts>
+    <!-- Use the NgFor Directive to iterate over the array of numbers.
+      Bold the number if it is even. -->
   `
 })
 export class AppComponent {
-  name = 'Brian Love';
-  twitter = '@brian_love';
+  // Define an array of numbers
 }

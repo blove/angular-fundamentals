@@ -4,9 +4,24 @@ import { Donut } from './models/donut.interface';
 @Component({
   selector: 'app-donut',
   template: `
-    <p>Donut name: {{ donut.name }} <span *ngIf="donut.icing">(icing)</span></p>
+    <div class="name">
+      <!-- Hide the name when the showName property is false -->
+      {{ donut.name }}
+      <span
+        *ngIf="donut.icing"
+        [hidden]="donut.fileName && donut.fileName.length > 0"
+        >(icing)</span
+      >
+    </div>
+    <img
+      *ngIf="donut.fileName && donut.fileName.length > 0"
+      [alt]="donut.name"
+      [src]="donut.fileName"
+    />
   `
 })
 export class DonutComponent {
   @Input() donut: Donut;
+
+  // add a showName input property that toggles the name
 }

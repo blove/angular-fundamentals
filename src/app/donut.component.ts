@@ -4,8 +4,7 @@ import { Donut } from './models/donut.interface';
 @Component({
   selector: 'app-donut',
   template: `
-    <!-- Add text indicator "(icing)" when the donut has icing -->
-    <p>Donut name: {{ donut.name }}</p>
+    <p>Donut name: {{ donut.name }} <span *ngIf="donut.icing">(icing)</span></p>
   `
 })
 export class DonutComponent {

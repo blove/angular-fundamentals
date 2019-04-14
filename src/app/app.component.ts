@@ -3,11 +3,8 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-root',
   template: `
-    <h1>{{ name }}</h1>
-    <p>Follow me: {{ twitter }}</p>
+    <!-- Set the size of the box -->
+    <app-box-of-donuts style="border: 1px solid #000;"></app-box-of-donuts>
   `
 })
-export class AppComponent {
-  name = 'Brian Love';
-  twitter = '@brian_love';
-}
+export class AppComponent {}

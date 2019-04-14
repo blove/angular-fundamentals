@@ -20,6 +20,6 @@ export class BoxOfDonutsComponent {
   @Input() size = 6;
 
   isFull(): boolean {
-    return this.donuts.length === +this.size;
+    return this.donuts.length === this.size;
   }
 }

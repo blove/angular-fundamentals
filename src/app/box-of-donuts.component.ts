@@ -9,11 +9,27 @@ import { Donut } from './models/donut.interface';
       <p *ngIf="isFull()">Box full</p>
     </div>
     <div class="donuts">
-      <!-- Add property binding for the showName property -->
-      <app-donut *ngFor="let donut of donuts" [donut]="donut"></app-donut>
+      <!-- Add click event handler to set the selectedDonut -->
+      <!-- Add the 'selected' class to the app-donut component when it is the currently selected donut -->
+      <app-donut
+        *ngFor="let donut of donuts"
+        [donut]="donut"
+        [showName]="showName"
+      ></app-donut>
     </div>
-    <!-- Add a button with a click event handler that will toggle the showName property -->
-  `
+    <button (click)="showName = !showName"></button>
+  `,
+  styles: [
+    `
+      .selected {
+        background: #efefef;
+      }
+
+      /**
+       * Copy styles for app-box-of-donuts from the root styles.css file.
+       */
+    `
+  ]
 })
 export class BoxOfDonutsComponent {
   donuts: Donut[] = [
@@ -37,12 +53,28 @@ export class BoxOfDonutsComponent {
       icing: true,
       fileName: 'assets/img/donuts/donut4.png'
     },
-    { name: 'Sirachi Infused', icing: false }
+    {
+      name: 'Strawberry Dipped',
+      icing: true,
+      fileName: 'assets/img/donuts/donut5.png'
+    },
+    {
+      name: 'Vanilla Dipped',
+      icing: true,
+      fileName: 'assets/img/donuts/donut6.png'
+    },
+    {
+      name: 'Cherry Coated',
+      icing: true,
+      fileName: 'assets/img/donuts/donut7.png'
+    }
   ];
 
-  // add a showName property that is a boolean value
-
   @Input() size = 6;
+
+  // add a selectedDonut property that is of type `Donut`
+
+  showName = true;
 
   isFull(): boolean {
     return this.donuts.length === this.size;

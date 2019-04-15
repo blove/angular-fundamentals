@@ -4,9 +4,9 @@ import { Donut } from './models/donut.interface';
 @Component({
   selector: 'app-donut',
   template: `
+    <!-- Use the NgStyle directive to set the font-weight to 'bold' for "chocolate" donuts -->
     <div class="name">
-      <!-- Hide the name when the showName property is false -->
-      {{ donut.name }}
+      <span [hidden]="!showName">{{ donut.name }}</span>
       <span
         *ngIf="donut.icing"
         [hidden]="donut.fileName && donut.fileName.length > 0"
@@ -17,11 +17,15 @@ import { Donut } from './models/donut.interface';
       *ngIf="donut.fileName && donut.fileName.length > 0"
       [alt]="donut.name"
       [src]="donut.fileName"
+      [style.width.%]="donut.name.length"
     />
   `
+  /**
+   * Add styles property and copy styles from the root styles.css
+   */
 })
 export class DonutComponent {
   @Input() donut: Donut;
 
-  // add a showName input property that toggles the name
+  @Input() showName: boolean;
 }

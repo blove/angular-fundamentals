@@ -5,7 +5,7 @@ import { Donut } from './models/donut.interface';
   selector: 'app-donut',
   template: `
     <div class="name">
-      <span [hidden]="!showName">{{ donut.name }}</span>
+      {{ donut.name }}
       <span
         *ngIf="donut.icing"
         [hidden]="donut.fileName && donut.fileName.length > 0"
@@ -17,13 +17,25 @@ import { Donut } from './models/donut.interface';
       [alt]="donut.name"
       [src]="donut.fileName"
     />
-  `
-  /**
-   * Add styles property and copy styles from the root styles.css
-   */
+  `,
+  styles: [
+    `
+      :host {
+        width: 25%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        text-align: center;
+        margin: 10px 0;
+      }
+
+      .heading {
+        padding: 10px;
+      }
+    `
+  ]
 })
 export class DonutComponent {
   @Input() donut: Donut;
-
-  @Input() showName: boolean;
 }

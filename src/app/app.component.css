@@ -1,3 +1,24 @@
-/**
-* Add host selector, and copy styles from the root styles.css file.
-*/
+:host {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.customer-form,
+.donut-form {
+  margin: 20px 0;
+}
+
+.customer-form,
+.donut-form form {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+}
+
+.customer-form,
+.donut-form form input {
+  margin: 10px 0;
+}

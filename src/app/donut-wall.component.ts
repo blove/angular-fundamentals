@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { Donut } from './models/donut.interface';
 
 @Component({
@@ -8,10 +8,10 @@ import { Donut } from './models/donut.interface';
       <img src="/assets/img/logo.png" />
     </div>
     <div class="wall">
-      <ng-container *ngFor="let donut of donuts">
+      <div class="donut" *ngFor="let donut of donuts">
         <app-donut [donut]="donut"></app-donut>
-        <!-- add button that emits the select event -->
-      </ng-container>
+        <button (click)="select.emit(donut)">select</button>
+      </div>
     </div>
   `,
   styles: [
@@ -31,12 +31,22 @@ import { Donut } from './models/donut.interface';
         flex-wrap: wrap;
         margin: 20px 0;
       }
+
+      .donut {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+      }
+
+      .donut > button {
+        background: transparent;
+        border: 1px solid #999;
+      }
     `
   ]
 })
 export class DonutWallComponent {
-  // add custom event emitter `select` that emits when a donut has been added
-
   /** The available donuts on the wall. */
   donuts: Donut[] = [
     {
@@ -75,4 +85,7 @@ export class DonutWallComponent {
       fileName: 'assets/img/donuts/donut7.png'
     }
   ];
+
+  /** Emit event when a donut is selected from the wall. */
+  @Output() select = new EventEmitter<Donut>();
 }

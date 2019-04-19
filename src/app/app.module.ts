@@ -12,7 +12,7 @@ import { DonutComponent } from './donut.component';
     BoxOfDonutsComponent,
     DonutWallComponent
   ],
-  imports: [BrowserModule],
+  imports: [BrowserModule], // import FormsModule
   providers: [],
   bootstrap: [AppComponent]
 })

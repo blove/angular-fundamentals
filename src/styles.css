@@ -2,10 +2,3 @@
 [hidden] {
   display: none !important;
 }
-
-app-root {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  font-family: Arial, Helvetica, sans-serif;
-}

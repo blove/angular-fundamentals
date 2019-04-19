@@ -27,6 +27,7 @@ export class AppComponent {
   }
 
   onSelect(donut: Donut): void {
-    this.donuts.push(donut);
+    // this.donuts.push(donut);
+    this.donuts = [...this.donuts, donut];
   }
 }

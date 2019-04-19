@@ -6,11 +6,7 @@ import { Donut } from './models/donut.interface';
   template: `
     <div class="name">
       {{ donut.name }}
-      <span
-        *ngIf="donut.icing"
-        [hidden]="donut.fileName && donut.fileName.length > 0"
-        >(icing)</span
-      >
+      <!-- add the donut price -->
     </div>
     <img
       *ngIf="donut.fileName && donut.fileName.length > 0"

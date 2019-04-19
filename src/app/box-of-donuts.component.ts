@@ -1,4 +1,9 @@
-import { Component, Input } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  Output
+  } from '@angular/core';
 import { Donut } from './models/donut.interface';
 
 @Component({
@@ -16,10 +21,10 @@ import { Donut } from './models/donut.interface';
       </div>
     </div>
     <div class="donuts">
-      <ng-container *ngFor="let donut of donuts">
+      <div class="donut" *ngFor="let donut of donuts">
         <app-donut [donut]="donut"></app-donut>
-        <!-- add button that emits the remove event -->
-      </ng-container>
+        <button (click)="remove.emit(donut)">remove</button>
+      </div>
     </div>
   `,
   styles: [
@@ -48,6 +53,18 @@ import { Donut } from './models/donut.interface';
         align-items: flex-start;
         flex-wrap: wrap;
       }
+
+      .donut {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+      }
+
+      .donut > button {
+        background: transparent;
+        border: 1px solid #999;
+      }
     `
   ]
 })
@@ -55,10 +72,13 @@ export class BoxOfDonutsComponent {
   /** The donuts in the box. */
   @Input() donuts: Donut[];
 
-  // add custom remove event emitter that emits a Donut object
+  /** Remove a donut from the box. */
+  @Output() remove = new EventEmitter<Donut>();
 
   /** The size of the box. This is the maximum number of donuts it can hold. */
   @Input() size = 6;
+
+  // add ngOnChanges() lifecycle method and verify that the number of donuts in the box does not exceed the size
 
   isFull(): boolean {
     return this.donuts && this.donuts.length === this.size;

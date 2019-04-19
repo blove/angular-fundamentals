@@ -4,9 +4,9 @@ import { Donut } from './models/donut.interface';
 @Component({
   selector: 'app-donut',
   template: `
-    <div class="name">
-      {{ donut.name }}
-      <!-- add the donut price -->
+    <div class="heading">
+      <div class="name">{{ donut.name }}</div>
+      <div class="price">{{ donut.price | currency }}</div>
     </div>
     <img
       *ngIf="donut.fileName && donut.fileName.length > 0"
@@ -17,17 +17,19 @@ import { Donut } from './models/donut.interface';
   styles: [
     `
       :host {
-        width: 25%;
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
         align-items: center;
         text-align: center;
-        margin: 10px 0;
+        margin: 10px;
       }
 
       .heading {
-        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
       }
     `
   ]

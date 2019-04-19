@@ -15,7 +15,7 @@ import { Donut } from './models/donut.interface';
       <div>
         <span *ngIf="size < 5">Small</span>
         <span *ngIf="size > 7">Large</span>
-        Box
+        <!-- add the customer's name -->
       </div>
       <div>
         {{ donuts ? donuts.length : 0 }}/{{ size | number: '2.0' }}
@@ -57,6 +57,7 @@ import { Donut } from './models/donut.interface';
       }
 
       .donut {
+        width: 100px;
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
@@ -73,6 +74,8 @@ import { Donut } from './models/donut.interface';
 export class BoxOfDonutsComponent implements OnChanges {
   /** The donuts in the box. */
   @Input() donuts: Donut[];
+
+  // add name input
 
   /** Remove a donut from the box. */
   @Output() remove = new EventEmitter<Donut>();

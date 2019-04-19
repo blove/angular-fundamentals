@@ -2,7 +2,9 @@ import {
   Component,
   EventEmitter,
   Input,
-  Output
+  OnChanges,
+  Output,
+  SimpleChanges
   } from '@angular/core';
 import { Donut } from './models/donut.interface';
 
@@ -16,7 +18,7 @@ import { Donut } from './models/donut.interface';
         Box
       </div>
       <div>
-        {{ donuts ? donuts.length : 0 }}/{{ size }}
+        {{ donuts ? donuts.length : 0 }}/{{ size | number: '2.0' }}
         <span *ngIf="isFull()">Box full</span>
       </div>
     </div>
@@ -68,7 +70,7 @@ import { Donut } from './models/donut.interface';
     `
   ]
 })
-export class BoxOfDonutsComponent {
+export class BoxOfDonutsComponent implements OnChanges {
   /** The donuts in the box. */
   @Input() donuts: Donut[];
 
@@ -78,7 +80,17 @@ export class BoxOfDonutsComponent {
   /** The size of the box. This is the maximum number of donuts it can hold. */
   @Input() size = 6;
 
-  // add ngOnChanges() lifecycle method and verify that the number of donuts in the box does not exceed the size
+  ngOnChanges(simpleChanges: SimpleChanges) {
+    console.log(this.donuts.length);
+
+    if (
+      simpleChanges.donuts &&
+      simpleChanges.donuts.currentValue &&
+      this.donuts.length > this.size
+    ) {
+      this.donuts.pop();
+    }
+  }
 
   isFull(): boolean {
     return this.donuts && this.donuts.length === this.size;

@@ -11,7 +11,7 @@ import { Donut } from './models/donut.interface';
       <div class="donut" *ngFor="let donut of donuts">
         <app-donut [donut]="donut"></app-donut>
         <button (click)="select.emit(donut)">select</button>
-        <!-- add a button that when clicked emits the edit custom event -->
+        <button (click)="edit.emit(donut)">edit</button>
       </div>
     </div>
   `,
@@ -99,7 +99,8 @@ export class DonutWallComponent {
     }
   ];
 
-  // add custom event `edit` that is emitted when the user clicks the edit button
+  /** Emit event when a donut is being edited. */
+  @Output() edit = new EventEmitter<Donut>();
 
   /** Emit event when a donut is selected from the wall. */
   @Output() select = new EventEmitter<Donut>();

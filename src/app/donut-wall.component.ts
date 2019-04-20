@@ -54,50 +54,7 @@ import { Donut } from './models/donut.interface';
 })
 export class DonutWallComponent {
   /** The available donuts on the wall. */
-  donuts: Donut[] = [
-    {
-      name: 'Chocolate Frosted',
-      icing: true,
-      fileName: 'assets/img/donuts/donut1.png',
-      price: 0.5
-    },
-    {
-      name: 'Strawberry Frosted',
-      icing: true,
-      fileName: 'assets/img/donuts/donut2.png',
-      price: 0.5
-    },
-    {
-      name: 'Chocolate Dipped',
-      icing: true,
-      fileName: 'assets/img/donuts/donut3.png',
-      price: 0.25
-    },
-    {
-      name: 'Cherry Dipped',
-      icing: true,
-      fileName: 'assets/img/donuts/donut4.png',
-      price: 0.25
-    },
-    {
-      name: 'Strawberry Dipped',
-      icing: true,
-      fileName: 'assets/img/donuts/donut5.png',
-      price: 0.25
-    },
-    {
-      name: 'Vanilla Dipped',
-      icing: true,
-      fileName: 'assets/img/donuts/donut6.png',
-      price: 0.25
-    },
-    {
-      name: 'Cherry Coated',
-      icing: true,
-      fileName: 'assets/img/donuts/donut7.png',
-      price: 0.75
-    }
-  ];
+  donuts: Donut[];
 
   /** Emit event when a donut is being edited. */
   @Output() edit = new EventEmitter<Donut>();

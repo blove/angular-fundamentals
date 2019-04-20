@@ -1,4 +1,8 @@
-import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
+import { FormControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 
-// add the donutNameValidator factory function
-// hint: use the following regular expression to validate the name: /(coated|dipped|frosted)/i.test()
+export function donutNameValidator(): ValidatorFn {
+  return (control: FormControl): ValidationErrors | null => {
+    const valid = /(coated|dipped|frosted)$/i.test(control.value);
+    return valid ? null : { donutName: { value: control.value } };
+  };
+}

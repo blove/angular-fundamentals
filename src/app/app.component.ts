@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Donut } from './models/donut.interface';
+import { donutNameValidator } from './validators/donut-name.validator';
 
 @Component({
   selector: 'app-root',
   template: `
     <app-donut-wall
-      (edit)="donut = $event"
+      (edit)="onEdit($event)"
       (select)="onSelect($event)"
     ></app-donut-wall>
     <app-box-of-donuts
@@ -23,10 +24,15 @@ import { Donut } from './models/donut.interface';
 
     <div class="donut-form" *ngIf="donut">
       <h2>Donut Kitchen</h2>
-      <!-- Use reactive forms instead of template-driven forms -->
-      <form #donutForm="ngForm" (ngSubmit)="onSubmit(donutForm)">
-        <input name="name" [(ngModel)]="donut.name" required />
-        <input name="price" [(ngModel)]="donut.price" required />
+      <form [formGroup]="donutFormGroup" (ngSubmit)="onSubmit()">
+        <input name="name" formControlName="name" />
+        <div *ngIf="!!donutFormGroup.get('name').errors?.donutName">
+          The name must specify the topping: coated, dipped or frosted.
+        </div>
+        <input name="price" formControlName="price" />
+        <button type="submit" [disabled]="!donutFormGroup.valid">
+          Fry it!
+        </button>
       </form>
     </div>
   `,
@@ -39,13 +45,23 @@ export class AppComponent {
   /** The donut that is in the kitched (edited). */
   donut: Donut;
 
-  // declare donutForm FormGroup instance
+  /** The form to modify a donut. */
+  donutFormGroup: FormGroup;
 
   /** The customer's name. */
   name: string;
 
-  // declare constructor function that requires the FormBuilder instance
-  // declare the donutForm using the FormBuilder.group instance method
+  constructor(formBuilder: FormBuilder) {
+    this.donutFormGroup = formBuilder.group({
+      name: ['', [Validators.required, donutNameValidator()]],
+      price: ['', [Validators.required, Validators.min(0.5)]]
+    });
+  }
+
+  onEdit(donut: Donut): void {
+    this.donut = donut;
+    this.donutFormGroup.patchValue(donut);
+  }
 
   onRemove(donut: Donut): void {
     const index = this.donuts.findIndex(d => d.name === donut.name);
@@ -60,9 +76,8 @@ export class AppComponent {
     this.donuts = [...this.donuts, donut];
   }
 
-  // remove form argument and reference donutForm FormGroup instance
-  onSubmit(form: NgForm): void {
-    console.log(form.value);
-    console.log(form.valid);
+  onSubmit(): void {
+    console.log(this.donutFormGroup.valid);
+    console.log(this.donutFormGroup.value);
   }
 }

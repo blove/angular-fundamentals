@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { BoxOfDonutsComponent } from './box-of-donuts.component';
@@ -12,7 +13,7 @@ import { DonutComponent } from './donut.component';
     BoxOfDonutsComponent,
     DonutWallComponent
   ],
-  imports: [BrowserModule], // import FormsModule
+  imports: [BrowserModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent]
 })

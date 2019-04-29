@@ -1,0 +1,10 @@
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+}
+
+form input {
+  margin: 10px 0;
+}

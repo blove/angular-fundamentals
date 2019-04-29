@@ -1,0 +1,32 @@
+.logo {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.wall {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  margin: 20px 0;
+}
+
+.donut {
+  width: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.donut > button {
+  background: transparent;
+  border: 1px solid #999;
+}
+
+.donut > button + button {
+  margin-top: 5px;
+}

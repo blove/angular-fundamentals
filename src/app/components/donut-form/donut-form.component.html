@@ -1,0 +1,10 @@
+<form [formGroup]="donutFormGroup" (ngSubmit)="onSubmit()">
+  <input name="name" formControlName="name" />
+  <div *ngIf="!!donutFormGroup.get('name').errors?.donutName">
+    The name must specify the topping: coated, dipped or frosted.
+  </div>
+  <input name="price" formControlName="price" />
+  <button type="submit" [disabled]="!donutFormGroup.valid">
+    Fry it!
+  </button>
+</form>

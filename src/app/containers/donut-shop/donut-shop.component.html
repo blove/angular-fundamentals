@@ -1,0 +1,10 @@
+<app-donut-wall
+  [donuts]="donuts"
+  (edit)="onEdit($event)"
+  (select)="onSelect($event)"
+></app-donut-wall>
+<app-box-of-donuts
+  [donuts]="selectedDonuts"
+  [size]="6"
+  (remove)="onRemove($event)"
+></app-box-of-donuts>

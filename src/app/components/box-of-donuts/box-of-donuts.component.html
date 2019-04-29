@@ -1,0 +1,17 @@
+<div class="heading">
+  <div>
+    <span *ngIf="size < 5">Small</span>
+    <span *ngIf="size > 7">Large</span>
+    Box for {{ name }}
+  </div>
+  <div>
+    {{ donuts ? donuts.length : 0 }}/{{ size | number: '2.0' }}
+    <span *ngIf="isFull()">Box full</span>
+  </div>
+</div>
+<div class="donuts">
+  <div class="donut" *ngFor="let donut of donuts">
+    <app-donut [donut]="donut"></app-donut>
+    <button (click)="remove.emit(donut)">remove</button>
+  </div>
+</div>

@@ -1,0 +1,9 @@
+<div class="heading">
+  <div class="name">{{ donut.name }}</div>
+  <div class="price">{{ donut.price | currency }}</div>
+</div>
+<img
+  *ngIf="donut.fileName && donut.fileName.length > 0"
+  [alt]="donut.name"
+  [src]="donut.fileName"
+/>

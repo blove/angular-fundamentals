@@ -8,6 +8,7 @@ import { environment } from '../environments/environment';
   styleUrls: ['app.component.css']
 })
 export class AppComponent {
+  // todo: inject the DonutService and invoke the populate() method
   constructor() {
     const value = window.localStorage.getItem(environment.storage.donuts);
     if (!value) {

@@ -1,0 +1,53 @@
+{
+  "donuts": [
+    {
+      "id": 1,
+      "name": "Chocolate Frosted",
+      "icing": true,
+      "fileName": "assets/img/donuts/donut1.png",
+      "price": 0.5
+    },
+    {
+      "id": 2,
+      "name": "Strawberry Frosted",
+      "icing": true,
+      "fileName": "assets/img/donuts/donut2.png",
+      "price": 0.5
+    },
+    {
+      "id": 3,
+      "name": "Chocolate Dipped",
+      "icing": true,
+      "fileName": "assets/img/donuts/donut3.png",
+      "price": 0.25
+    },
+    {
+      "id": 4,
+      "name": "Cherry Dipped",
+      "icing": true,
+      "fileName": "assets/img/donuts/donut4.png",
+      "price": 0.25
+    },
+    {
+      "id": 5,
+      "name": "Strawberry Dipped",
+      "icing": true,
+      "fileName": "assets/img/donuts/donut5.png",
+      "price": 0.25
+    },
+    {
+      "id": 6,
+      "name": "Vanilla Dipped",
+      "icing": true,
+      "fileName": "assets/img/donuts/donut6.png",
+      "price": 0.25
+    },
+    {
+      "id": 7,
+      "name": "Cherry Coated",
+      "icing": true,
+      "fileName": "assets/img/donuts/donut7.png",
+      "price": 0.75
+    }
+  ]
+}

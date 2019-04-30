@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import data from './data/donuts.json';
-import { environment } from '../environments/environment';
+import { DonutService } from './services/donut.service.js';
 
 @Component({
   selector: 'app-root',
@@ -8,14 +7,8 @@ import { environment } from '../environments/environment';
   styleUrls: ['app.component.css']
 })
 export class AppComponent {
-  // todo: inject the DonutService and invoke the populate() method
-  constructor() {
-    const value = window.localStorage.getItem(environment.storage.donuts);
-    if (!value) {
-      window.localStorage.setItem(
-        environment.storage.donuts,
-        JSON.stringify(data)
-      );
-    }
+  // todo: remove
+  constructor(donutService: DonutService) {
+    donutService.populate();
   }
 }

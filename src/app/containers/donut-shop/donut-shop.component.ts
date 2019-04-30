@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Donut } from 'src/app/models/donut.interface.js';
-import { environment } from '../../../environments/environment';
 import { Router } from '@angular/router';
+import { DonutService } from 'src/app/services/donut.service';
 
 @Component({
   selector: 'app-donut-shop',
@@ -15,14 +15,11 @@ export class DonutShopComponent implements OnInit {
   /** The donuts selected for the box. */
   selectedDonuts: Donut[] = [];
 
-  // todo: inject the DonutService
-  constructor(private router: Router) {}
+  constructor(private donutService: DonutService, private router: Router) {}
 
   ngOnInit() {
-    // todo: use the DonutService.getAll() method
-    this.donuts = JSON.parse(
-      window.localStorage.getItem(environment.storage.donuts)
-    );
+    // todo: subscribe to the observable and set the donuts property
+    this.donuts = this.donutService.getAll();
   }
 
   onEdit(donut: Donut): void {

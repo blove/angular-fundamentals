@@ -41,7 +41,7 @@ const routes: Route[] = [
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forRoot(routes)
-  ],
+  ], // todo: import the HttpClientModule
   providers: [],
   bootstrap: [AppComponent]
 })

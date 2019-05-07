@@ -22,8 +22,8 @@ export class KitchenComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    // get donuts from local storage
-    this.donuts = this.donutService.getAll();
+    // get donuts
+    this.donutService.getAll().subscribe(donuts => (this.donuts = donuts));
 
     // get the id parameter
     const id = this.activatedRoute.snapshot.paramMap.get('id');

@@ -1,39 +1,21 @@
 import { Injectable } from '@angular/core';
 import { Donut } from '../models/donut.interface';
-import { environment } from '../../environments/environment';
-import data from '../data/donuts.json';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DonutService {
-  // todo: inject the HttpClient instance
-  constructor() {}
+  private readonly BASE_URL = 'http://localhost:3000/';
 
-  getAll(): Donut[] {
-    // todo: refactor to use the HttpClient.get() method
-    return JSON.parse(window.localStorage.getItem(environment.storage.donuts));
-  }
+  constructor(private httpClient: HttpClient) {}
 
-  // todo: remove
-  populate(): void {
-    const value = window.localStorage.getItem(environment.storage.donuts);
-    if (!value) {
-      window.localStorage.setItem(
-        environment.storage.donuts,
-        JSON.stringify(data)
-      );
-    }
+  getAll(): Observable<Array<Donut>> {
+    return this.httpClient.get<Array<Donut>>(`${this.BASE_URL}donuts`);
   }
 
   save(donut: Donut): void {
-    // todo: refactor to use the HttpClient.put() method
-    const donuts = this.getAll();
-    const index = donuts.findIndex(d => d.id === donut.id);
-    donuts[index] = donut;
-    window.localStorage.setItem(
-      environment.storage.donuts,
-      JSON.stringify(donuts)
-    );
+    this.httpClient.put(`${this.BASE_URL}donuts/${donut.id}`, donut);
   }
 }

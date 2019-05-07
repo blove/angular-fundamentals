@@ -9,6 +9,7 @@ import { DonutFormComponent } from './components/donut-form/donut-form.component
 import { DonutWallComponent } from './components/donut-wall/donut-wall.component';
 import { DonutShopComponent } from './containers/donut-shop/donut-shop.component';
 import { KitchenComponent } from './containers/kitchen/kitchen.component';
+import { HttpClientModule } from '@angular/common/http';
 
 const routes: Route[] = [
   {
@@ -39,9 +40,10 @@ const routes: Route[] = [
   imports: [
     BrowserModule,
     FormsModule,
+    HttpClientModule,
     ReactiveFormsModule,
     RouterModule.forRoot(routes)
-  ], // todo: import the HttpClientModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

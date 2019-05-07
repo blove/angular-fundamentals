@@ -18,8 +18,7 @@ export class DonutShopComponent implements OnInit {
   constructor(private donutService: DonutService, private router: Router) {}
 
   ngOnInit() {
-    // todo: subscribe to the observable and set the donuts property
-    this.donuts = this.donutService.getAll();
+    this.donutService.getAll().subscribe(donuts => (this.donuts = donuts));
   }
 
   onEdit(donut: Donut): void {
